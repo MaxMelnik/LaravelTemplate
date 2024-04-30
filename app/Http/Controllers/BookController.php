@@ -37,4 +37,34 @@ class BookController extends Controller
 
         dd('created');
     }
+
+    public function update()
+    {
+        $book = Book::find(2);
+
+        $book->update([
+            'title' => 'Dump Title Update',
+            'author' => 'John Dump',
+            'size' => 101,
+        ]);
+
+        dd('updated');
+    }
+
+    public function delete()
+    {
+        $book = Book::find(2);
+        $book->delete();
+
+        dd('deleted');
+    }
+
+
+    public function restore()
+    {
+        $book = Book::withTrashed() -> find(2);
+        $book->restore();
+
+        dd('restored');
+    }
 }

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->unsignedInteger('size');
             $table->boolean('is_in_stock')->default(true);
             $table->timestamps();
+
+            $table->softDeletes();
         });
     }
 

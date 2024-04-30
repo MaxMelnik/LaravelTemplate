@@ -10,3 +10,6 @@ Route::get('/', function () {
 
 Route::get('/books', [BookController::class, 'index']);
 Route::get('/books/create', [BookController::class, 'create']);
+Route::get('/books/update', [BookController::class, 'update']);
+Route::get('/books/delete', [BookController::class, 'delete']);
+Route::get('/books/restore', [BookController::class, 'restore']);
