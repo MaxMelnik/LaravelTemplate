@@ -15,4 +15,26 @@ class BookController extends Controller
         dump($book->size);
         dump($book->is_in_stock);
     }
+
+    public function create()
+    {
+        $newBooksArray = [
+            [
+                'title' => 'Dump Title',
+                'author' => 'John Dump',
+                'size' => 100,
+                'is_in_stock' => false,
+            ],
+            [
+                'title' => 'Dump Title 2',
+                'author' => 'John Dump',
+                'size' => 20,
+                'is_in_stock' => true,
+            ]
+        ];
+
+        Book::insert($newBooksArray);
+
+        dd('created');
+    }
 }
