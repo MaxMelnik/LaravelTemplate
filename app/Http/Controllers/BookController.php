@@ -62,9 +62,50 @@ class BookController extends Controller
 
     public function restore()
     {
-        $book = Book::withTrashed() -> find(2);
+        $book = Book::withTrashed()->find(2);
         $book->restore();
 
         dd('restored');
+    }
+
+    // firstOrCreate
+    // updateOrCreate
+
+    public function firstOrCreate()
+    {
+        $oldBook = ['title' => 'Another Title'];
+        $newBook = [
+            'title' => 'Another Title',
+            'author' => 'Another John',
+            'size' => 12,
+            'is_in_stock' => true,
+        ];
+        $book = Book::firstOrCreate(
+            $oldBook,
+            $newBook,
+        );
+
+        dump($book->author);
+
+        dd('firstOrCreate');
+    }
+
+    public function updateOrCreate()
+    {
+        $oldBook = ['title' => 'Another Title'];
+        $newBook = [
+            'title' => 'Another Title',
+            'author' => 'Updated John',
+            'size' => 13,
+            'is_in_stock' => true,
+        ];
+        $book = Book::updateOrCreate(
+            $oldBook,
+            $newBook,
+        );
+
+        dump($book->author);
+
+        dd('updateOrCreate');
     }
 }
