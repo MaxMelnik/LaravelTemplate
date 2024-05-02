@@ -9,11 +9,8 @@ class BookController extends Controller
 {
     public function index()
     {
-        $book = Book::find(1);
-        dump($book->title);
-        dump($book->author);
-        dump($book->size);
-        dump($book->is_in_stock);
+        $books = Book::all();
+        return view('books', compact('books'));
     }
 
     public function create()
